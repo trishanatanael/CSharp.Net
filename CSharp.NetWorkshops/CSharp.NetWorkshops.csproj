@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>CSharp.NetWorkshops.DiceApp3</StartupObject>
+    <StartupObject>CSharp.NetWorkshops.BankAccountApp</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ISS.RV.LIB">
@@ -49,6 +49,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BankAccount.cs" />
+    <Compile Include="Coin.cs" />
     <Compile Include="Dice3.cs" />
     <Compile Include="Dice2.cs" />
     <Compile Include="Dice.cs" />
