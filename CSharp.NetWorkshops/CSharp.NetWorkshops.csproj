@@ -33,7 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>CSharp.NetWorkshops.BankAccountApp</StartupObject>
+    <StartupObject>CSharp.NetWorkshops.SampleCoinApp</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ISS.RV.LIB">
@@ -49,8 +49,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Workshop21SampleCoinClass.cs" />
+    <Compile Include="BankAccount3.cs" />
+    <Compile Include="BankAccount2.cs" />
     <Compile Include="BankAccount.cs" />
+    <Compile Include="5.1.cs" />
     <Compile Include="Coin.cs" />
+    <Compile Include="Workshop22aRectangle.cs" />
+    <Compile Include="Workshop22aTriangle.cs" />
+    <Compile Include="Workshop22aCircles.cs" />
     <Compile Include="Dice3.cs" />
     <Compile Include="Dice2.cs" />
     <Compile Include="Dice.cs" />

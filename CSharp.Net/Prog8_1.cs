@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ISS.RV.LIB;
+
 
 namespace Prog8_2
 {
@@ -17,7 +19,7 @@ namespace Prog8_2
             int face = HEAD;
             public void Flip()
             {
-                face = ISS.RNDInt(2);
+               // face = ISS.RNDInt(2);
             }
             public int GetFace()
             {
