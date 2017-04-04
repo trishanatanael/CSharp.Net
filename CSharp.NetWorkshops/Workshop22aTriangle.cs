@@ -8,7 +8,6 @@ namespace CSharp.NetWorkshops
 {
     class Workshop22aTriangle
     {
-
         //attributes
         double s1,s2,s3;
 
@@ -20,11 +19,6 @@ namespace CSharp.NetWorkshops
             s3 = c;
         }
 
-        //method
-        public string StrValue()
-        {
-            return (String.Format("Triangle: {0}, {1}, {2}",S1,S2,S3));
-        }
         //property
         public double S1
         {
@@ -47,6 +41,7 @@ namespace CSharp.NetWorkshops
                 return (s3);
             }
         }
+        //method
         public double Area
         {
             get
@@ -60,24 +55,30 @@ namespace CSharp.NetWorkshops
         {
             get
             {
-                return (s1+s2+s3);
+                return (s1 + s2 + s3);
             }
         }
         public bool IsRightAngle
         {
             get
             {
-                return ((s1*s1 + s2*s2) == (s3 * s3));
+                return ((s1 * s1 + s2 * s2) == (s3 * s3));
             }
 
         }
+        //property to return string
+        public string StrValue()
+        {
+            return (String.Format("Triangle: {0}, {1}, {2}", S1, S2, S3));
+        }
+
 
     }   
     class Workshop22aTriangleApp
     {
         public static void Main()
         {
-            Workshop22aTriangle t = new Workshop22aTriangle(6, 10, 12);
+            Workshop22aTriangle t = new Workshop22aTriangle(10, 24, 26);
             Console.WriteLine(t.StrValue());
             Console.WriteLine(t.Perimeter);
             Console.WriteLine(t.Area);

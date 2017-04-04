@@ -18,12 +18,6 @@ namespace CSharp.NetWorkshops
             length = l;
             breadth = b;
         }
-
-        //method
-        public string StrValue()
-        {
-            return (String.Format("Rectangle: {0}, {1}", Length, Breadth));
-        }
         //property
         public double Length
         {
@@ -53,7 +47,12 @@ namespace CSharp.NetWorkshops
                 return (2*(Length + Breadth));
             }
         }
-        
+        //prop to set string output
+        public string StrValue()
+        {
+            return (String.Format("Rectangle: {0}, {1}", Length, Breadth));
+        }
+
     }
     class Workshop22aRectangleApp
     {

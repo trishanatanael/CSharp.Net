@@ -6,51 +6,25 @@ using ISS.RV.LIB;
 
 namespace CSharp.NetWorkshops
 {
-    public class Customer
-    {
-        private string name;
-        private string address;
-        private string passportNumber;
-        private DateTime dateOfBirth;
-
-        //propeties-accessmut
-        public string Name
-        {
-            get
-            {
-                return name;
-            }
-        }
-        public string Address
-        {
-            get
-            {
-                return address;
-            }
-        }
-        public string PassportNumber
-        {
-            get
-            {
-                return passportNumber;
-            }
-        }
-        public int Age
-        {
-            get
-            {
-                return DateTime.Now.Year - dateOfBirth.Year;
-            }
-        }
-    }
-    public class BankAccount2
+    //workshop 3.1
+    public class BankAccount
     {
         //attributes
-        public string accountNumber;
-        public string accountHolder;
-        public double balance;
+        private string accountNumber;
+        private string accountHolder;
+        private double balance;
 
-        // properties 
+        // Constructor
+        public BankAccount(string number, string holder, double bal)
+        {
+            accountNumber = number;
+            accountHolder = holder;
+            balance = bal;
+        }
+        public BankAccount() : this("000-000-000", "NONAME", 0)
+        {
+        }
+        //propeties
         public string AccountNumber
         {
             get
@@ -64,6 +38,10 @@ namespace CSharp.NetWorkshops
             {
                 return accountHolder;
             }
+            set
+            {
+                accountHolder = value;
+            }
         }
         public double Balance
         {
@@ -72,16 +50,6 @@ namespace CSharp.NetWorkshops
                 return balance;
             }
         }
-
-        // Constructor
-        public BankAccount2(string number, string holder, double bal)
-        {
-            accountNumber = number;
-            accountHolder = holder;
-            balance = bal;
-
-        }
-        public BankAccount2() : this("000-000-000", "NONAME", 0) { }
 
         // methods = what it can do
         //Dep,withdraw,transfer
@@ -97,10 +65,10 @@ namespace CSharp.NetWorkshops
                 return (true);
             }
             else
-                Console.WriteLine("Withdrawal for {0} is unsuccesful", AccountHolder);
+                Console.Error.WriteLine("Withdrawal for {0} is unsuccesful", AccountHolder);
                 return (false);
         }
-        public bool TransferTo(double amount, BankAccount2 another)
+        public bool TransferTo(double amount, BankAccount another)
         {
             if (Withdraw(amount))
             {
@@ -109,7 +77,7 @@ namespace CSharp.NetWorkshops
             }
             else
             {
-                Console.WriteLine("Transfer to {0} is unsuccessful", another);
+                Console.Error.WriteLine("Transfer to {0} is unsuccessful", another);
                 return (false);
             }
         }
@@ -123,8 +91,8 @@ namespace CSharp.NetWorkshops
     {
         static void Main()
         {
-            BankAccount2 a = new BankAccount2("001-001-001", "Tan Ah Kow", 2000);
-            BankAccount2 b = new BankAccount2("001-001-002", "Kim Keng Lee", 5000);
+            BankAccount a = new BankAccount("001-001-001", "Tan Ah Kow", 2000);
+            BankAccount b = new BankAccount("001-001-002", "Kim Keng Lee", 5000);
             Console.WriteLine(a.Show());
             Console.WriteLine(b.Show());
             a.Deposit(100);

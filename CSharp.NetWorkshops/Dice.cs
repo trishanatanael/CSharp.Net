@@ -45,9 +45,9 @@ namespace CSharp.NetWorkshops
         public static void Main()
         {
             Dice dice1 = new Dice();
-            dice1.Throw();
-            Console.WriteLine(dice1.StrFaceUp);
-            
+            dice1.Throw(); Console.WriteLine(dice1.StrFaceUp);
+            dice1.Throw(); Console.WriteLine(dice1.StrFaceUp);
+            dice1.Throw(); Console.WriteLine(dice1.StrFaceUp);
         }
     }
 }

@@ -19,11 +19,6 @@ namespace CSharp.NetWorkshops
 
         }
 
-        //method
-        public string StrValue()
-        {
-            return (String.Format("Circle: {0}",Rad));
-        }
         //property
         public double Rad
         {
@@ -47,17 +42,21 @@ namespace CSharp.NetWorkshops
                 return (Math.PI*radius/4);
             }
         }
+        //prop to print string
+        public string StrValue()
+        {
+            return (String.Format("Circle: {0}", Rad));
+        }
 
     }   
     class Workshop22aCircleApp
     {
         public static void Main()
         {
-            Workshop22aTriangle t = new Workshop22aTriangle(6, 10, 12);
-            Console.WriteLine(t.StrValue());
-            Console.WriteLine(t.Perimeter);
-            Console.WriteLine(t.Area);
-            Console.WriteLine(t.IsRightAngle);
+            Workshop22aCircle c = new Workshop22aCircle(7);
+            Console.WriteLine(c.StrValue());
+            Console.WriteLine(c.Perimeter);
+            Console.WriteLine(c.Area);
         }
     }
 
