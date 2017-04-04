@@ -83,11 +83,11 @@ namespace CSharp.NetWorkshops
         }
             public string Show()
             {
-            string m = String.Format("[Account:AccountNumber{0}, AccountHolder={1}, Balance{2}]", AccountNumber, AccountHolder, Balance);
+            string m = String.Format("[Account:AccountNumber{0}, AccountHolder= {1}, Balance {2}]", AccountNumber, AccountHolder, Balance);
             return m;
         }
     }
-    public class BankAccountApp2
+    public class BankAccountApp
     {
         static void Main()
         {
