@@ -19,7 +19,7 @@ namespace Prog8_2
             int face = HEAD;
             public void Flip()
             {
-               // face = ISS.RNDInt(2);
+               face = RNDInt(2);
             }
             public int GetFace()
             {
