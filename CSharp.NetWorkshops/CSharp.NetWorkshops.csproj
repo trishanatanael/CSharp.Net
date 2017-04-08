@@ -50,8 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BankAccount2Mul.cs" />
     <Compile Include="Workshop21SampleCoinClass.cs" />
-    <Compile Include="BankAccount3.cs" />
     <Compile Include="BankAccount2.cs" />
     <Compile Include="BankAccount.cs" />
     <Compile Include="5.1.cs" />
