@@ -15,7 +15,8 @@ namespace CSharp.NetWorkshops
         private string address;
         private string passport;
         private DateTime dateOfBirth;
-
+        private BankAccount2Mul[] bankAccounts2Mul;
+        private int noOfBankAccounts;
         //property
         public string Name
         {
@@ -54,6 +55,12 @@ namespace CSharp.NetWorkshops
             }
         }
         //Methods
+        public void AddBankAccount(BankAccount2Mul a)
+        {
+            bankAccounts2Mul[noOfBankAccounts] = a;
+            noOfBankAccounts++;
+
+        }
         public string Show()
         {
 
@@ -74,6 +81,8 @@ namespace CSharp.NetWorkshops
             this.name = name;
             this.address = address;
             this.passport = passport;
+            this.bankAccounts2Mul = new BankAccount2Mul[10];
+            this.noOfBankAccounts = 0;
         }
         public Customer2Mul():this("NoName", "NoAddress","NoPassport",new DateTime(1980,1,1))
         { 
@@ -97,6 +106,7 @@ namespace CSharp.NetWorkshops
             accountNumber = number;
             accountHolder = holder;
             balance = bal;
+            holder.AddBankAccount(this);
         }
         public BankAccount2Mul(): this("000-000-000", new Customer2Mul(), 0)
         {
