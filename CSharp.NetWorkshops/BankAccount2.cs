@@ -16,7 +16,6 @@ namespace CSharp.NetWorkshops
         private string passport;
         private DateTime dateOfBirth;
 
-        //constructor
         //property
         public string Name
         {
@@ -58,7 +57,7 @@ namespace CSharp.NetWorkshops
         public string Show()
         {
 
-            string n = String.Format("[Customer: name={0}, address={1},passport{2},age{3}]", Name, Address, Passport, Age);
+            string n = String.Format("[Customer: name={0},address={1},passport={2},age={3}]", Name, Address, Passport, Age);
             return (n);
         }
         //Constructor
@@ -78,7 +77,6 @@ namespace CSharp.NetWorkshops
         }
         public Customer():this("NoName", "NoAddress","NoPassport",new DateTime(1980,1,1))
         { 
-
         }
 
     }
@@ -157,14 +155,14 @@ namespace CSharp.NetWorkshops
             }
             else
             {
-                Console.Error.WriteLine("Transfer to {0} is unsuccessful", another);
+                Console.Error.WriteLine("Transfer to {0} is unsuccessful", AccountHolder);
                 return (false);
             }
         }
         public string Show()
         {
-            string m = String.Format("[Account:AccountNumber{0}, AccountHolder= {1}, Balance {2}]", AccountNumber, AccountHolder, Balance);
-            return m;
+            string m = String.Format("[Account: accountNumber = {0}, accountHolder = {1}, balance = {2}]", AccountNumber, AccountHolder.Show(), Balance);
+            return (m);
         }
     }
     public class BankAccountApp2
