@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BankAccountInheritance.cs" />
     <Compile Include="BankAccount2Mul.cs" />
     <Compile Include="RationalTest.cs" />
     <Compile Include="Workshop21SampleCoinClass.cs" />
