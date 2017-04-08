@@ -177,7 +177,7 @@ namespace CSharp.NetWorkshops
     }
     public class BankAccountApp2Mul
     {
-        static void Main()
+        public static void Main()
         {
             Customer2Mul t = new Customer2Mul("Tan Ah Kow", "20, Seaside Road", "XXX20", new DateTime(1989, 10, 11));
             Customer2Mul c = new Customer2Mul("Kim Lee Keng", "2, Rich View", "XXX9F", new DateTime(1993, 4, 25));

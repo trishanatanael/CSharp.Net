@@ -34,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>CSharp.NetWorkshops.RationalTest</StartupObject>
+    <StartupObject>CSharp.NetWorkshops.BankAccountAppInheritance</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ISS.RV.LIB">

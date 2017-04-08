@@ -87,7 +87,6 @@ namespace CSharp.NetWorkshops
         private string accountNumber;
         private CustomerInheritance accountHolder;
         protected double balance;
-       // private double interestRate;
 
         // Constructor
         public BankAccountInheritance(string number, CustomerInheritance holder, double bal)
@@ -131,8 +130,7 @@ namespace CSharp.NetWorkshops
             }
         }
 
-        // methods = what it can do
-        //Dep,withdraw,transfer
+        // methods = what it can do (Deposit,withdraw,transfer)
         public void Deposit(double amount)
         {
             balance = balance + amount;
@@ -171,57 +169,60 @@ namespace CSharp.NetWorkshops
     }
     public class CurrentAccount : BankAccountInheritance
     {
-        public CurrentAccount(string number, CustomerInheritance holder, double balance) : base(number, holder, bal)
+        public CurrentAccount(string number, CustomerInheritance holder, double bal) : base(number, holder, bal)
         {
         }
         public new double CalculateInterest()
         {
             return (Balance * 0.25 / 100);
         }
-        public string Show()
+        public new string Show()
         {
-            string m = String.Format("[CurrentAccount: accountNumber = {0}, accountHolder = {1}, balance = {2}]", AccountNumber, AccountHolder.Show(), Balance);
+            //solution doesnt use new
+            string m = String.Format("[OverdraftAccount: accountNumber = {0}, accountHolder = {1}, balance = {2}]", AccountNumber, AccountHolder.Show(), Balance);
             return (m);
         }
 
     }
     public class OverdraftAccount : BankAccountInheritance
     {
-        public OverdraftAccount(string number, CustomerInheritance holder, double balance) : base(number, holder, bal)
+        private static double interestRate = 0.25;
+        private static double overdraftInterest = 6;
+        public OverdraftAccount(string number, CustomerInheritance holder, double bal) : base(number, holder, bal)
         {
-            private static double interestRate = 0.25;
-            private static double overdraftInterest = 6;
-
+        }
+        public new bool Withdraw(double amount)
+        {
+            balance = balance - amount;
+            return (true);
         }
         public new double CalculateInterest()
         {
-            return (Balance * 0.25 / 100);
+            return ((Balance > 0) ?
+                    (Balance * interestRate / 100) :
+                    (Balance * overdraftInterest / 100));
         }
-        public string Show()
+        public new string Show()
         {
-            string m = String.Format("[CurrentAccount: accountNumber = {0}, accountHolder = {1}, balance = {2}]", AccountNumber, AccountHolder.Show(), Balance);
-            return (m);
+            //solution doesnt use new
+            string g = String.Format("[CurrentAccount: accountNumber = {0}, accountHolder = {1}, balance = {2}]", AccountNumber, AccountHolder.Show(), Balance);
+            return (g);
         }
-
     }
     public class BankAccountAppInheritance
     {
-        static void Main()
+        public static void Main()
         {
-            CustomerInheritance y = new CustomerInheritance("Tan Ah Kow", "20, Seaside Road", "XXX20", new DateTime(1989, 10, 11));
-            CustomerInheritance z = new CustomerInheritance("Kim Lee Keng", "2, Rich View", "XXX9F", new DateTime(1993, 4, 25));
-            BankAccountInheritance a = new BankAccountInheritance("001-001-001", y, 2000);
-            BankAccountInheritance b = new BankAccountInheritance("001-001-002", z, 5000);
+            CustomerInheritance cus1 = new CustomerInheritance("Tan Ah Kow", "2 Rich Street", "P123123", 20);
+            CustomerInheritance cus2 = new CustomerInheritance("Kim May Mee", "89 Gold Road", "P334412", 60);
+            BankAccountInheritance a1 = new BankAccountInheritance("S0000223", cus1, 2000);
 
-            Console.WriteLine(a.Show());
-            Console.WriteLine(b.Show());
-            a.Deposit(100);
-            Console.WriteLine(a.Show());
-            a.Withdraw(200);
-            Console.WriteLine(a.Show());
-            a.TransferTo(300, b);
-            Console.WriteLine(a.Show());
-            Console.WriteLine(b.Show());
+            Console.WriteLine(a1.CalculateInterest());
+            OverdraftAccount a2 = new OverdraftAccount("O1230124", cus1, 2000);
+            Console.WriteLine(a2.CalculateInterest());
+            CurrentAccount a3 = new CurrentAccount("C1230125", cus2, 2000);
+            Console.WriteLine(a3.CalculateInterest());
+
         }
     }
 }
