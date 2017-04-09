@@ -6,9 +6,8 @@ using ISS.RV.LIB;
 
 namespace CSharp.NetWorkshops
 {
-
-    //workshop 4
-    public class CustomerInheritance
+    //workshop 5a Polymorph
+    public class CustomerPoly
     {
         //attributes
         private string name;
@@ -61,41 +60,41 @@ namespace CSharp.NetWorkshops
             return (n);
         }
         //Constructor
-        public CustomerInheritance(string name, string address, string passport, DateTime dob) : this(name,address,passport)
+        public CustomerPoly(string name, string address, string passport, DateTime dob) : this(name,address,passport)
         {
             this.dateOfBirth = dob;
         }
-        public CustomerInheritance(string name, string address, string passport, int age) : this(name, address, passport)
+        public CustomerPoly(string name, string address, string passport, int age) : this(name, address, passport)
         {
             this.dateOfBirth = new DateTime(DateTime.Now.Year - age, 1, 1);
         }
-        public CustomerInheritance(string name, string address, string passport)
+        public CustomerPoly(string name, string address, string passport)
         {
             this.name = name;
             this.address = address;
             this.passport = passport;
         }
-        public CustomerInheritance():this("NoName", "NoAddress","NoPassport",new DateTime(1980,1,1))
+        public CustomerPoly():this("NoName", "NoAddress","NoPassport",new DateTime(1980,1,1))
         { 
         }
 
     }
 
-    public class BankAccountInheritance
+    public class BankAccountPoly
     {
         //attributes
         private string accountNumber;
-        private CustomerInheritance accountHolder;
+        private CustomerPoly accountHolder;
         protected double balance;
 
         // Constructor
-        public BankAccountInheritance(string number, CustomerInheritance holder, double bal)
+        public BankAccountPoly(string number, CustomerPoly holder, double bal)
         {
             accountNumber = number;
             accountHolder = holder;
             balance = bal;
         }
-        public BankAccountInheritance() : this("000-000-000", new CustomerInheritance(), 0)
+        public BankAccountPoly() : this("000-000-000", new CustomerPoly(), 0)
         {
             //default value
         }
@@ -107,7 +106,7 @@ namespace CSharp.NetWorkshops
                 return accountNumber;
             }
         }
-        public CustomerInheritance AccountHolder
+        public CustomerPoly AccountHolder
         {
             get
             {
@@ -135,60 +134,61 @@ namespace CSharp.NetWorkshops
         {
             balance = balance + amount;
         }
-        public bool Withdraw(double amount)
+        public virtual bool Withdraw(double amount)
         {
-            if (amount < Balance)
-            {
                 balance = balance - amount;
                 return (true);
-            }
-            else
-                Console.WriteLine("Cannot withdraw");
-            return (false);
         }
-        public void TransferTo(double amount, BankAccountInheritance another)
+        public bool TransferTo(double amount, BankAccountPoly another)
         {
             if (Withdraw(amount))
             {
                 another.Deposit(amount);
+                return (true);
+            }
+            else
+            {
+                Console.WriteLine("Cannot transfer");
+                return (false);
             }
         }
-        public double CalculateInterest()
+        public virtual double CalculateInterest()
         {
-            return (Balance*1/100);
+            return (0);
         }
         public void CreditInterest()
         {
             Deposit(CalculateInterest());
         }
+
         public virtual string Show()
         {
             string m = String.Format("[BankAccount: accountNumber = {0}, accountHolder = {1}, balance = {2}]", AccountNumber, AccountHolder.Show(), Balance);
             return (m);
         }
     }
-    public class CurrentAccount : BankAccountInheritance
+    
+    public class CurrentAccountPoly : BankAccountPoly
     {
-        public CurrentAccount(string number, CustomerInheritance holder, double bal) : base(number, holder, bal)
+        public CurrentAccountPoly(string number, CustomerPoly holder, double bal) : base(number, holder, bal)
         {
         }
         public new double CalculateInterest()
         {
             return (Balance * 0.25 / 100);
         }
-        public new string Show()
+        public override string Show()
         {
-            //solution doesnt use new
             string m = String.Format("[OverdraftAccount: accountNumber = {0}, accountHolder = {1}, balance = {2}]", AccountNumber, AccountHolder.Show(), Balance);
             return (m);
         }
 
     }
-    public class OverdraftAccount : BankAccountInheritance
+    public class OverdraftAccountPoly : BankAccountPoly
     {
         private static double interestRate = 0.25;
         private static double overdraftInterest = 6;
-        public OverdraftAccount(string number, CustomerInheritance holder, double bal) : base(number, holder, bal)
+        public OverdraftAccountPoly(string number, CustomerPoly holder, double bal) : base(number, holder, bal)
         {
         }
         public new bool Withdraw(double amount)
@@ -204,24 +204,24 @@ namespace CSharp.NetWorkshops
         }
         public override string Show()
         {
-            //solution doesnt use new
             string g = String.Format("[CurrentAccount: accountNumber = {0}, accountHolder = {1}, balance = {2}]", AccountNumber, AccountHolder.Show(), Balance);
             return (g);
         }
     }
-    public class BankAccountAppInheritance
+    public class BankAccountAppPoly
     {
         public static void Main()
         {
-            CustomerInheritance cus1 = new CustomerInheritance("Tan Ah Kow", "2 Rich Street", "P123123", 20);
-            CustomerInheritance cus2 = new CustomerInheritance("Kim May Mee", "89 Gold Road", "P334412", 60);
-            BankAccountInheritance a1 = new BankAccountInheritance("S0000223", cus1, 2000);
+            CustomerPoly cus1 = new CustomerPoly("Tan Ah Kow", "2 Rich Street", "P123123", 20);
+            CustomerPoly cus2 = new CustomerPoly("Kim May Mee", "89 Gold Road", "P334412", 60);
+            BankAccountPoly a1 = new BankAccountPoly("S0000223", cus1, 2000);
 
             Console.WriteLine(a1.CalculateInterest());
-            OverdraftAccount a2 = new OverdraftAccount("O1230124", cus1, 2000);
+            OverdraftAccountPoly a2 = new OverdraftAccountPoly("O1230124", cus1, 2000);
             Console.WriteLine(a2.CalculateInterest());
-            CurrentAccount a3 = new CurrentAccount("C1230125", cus2, 2000);
-            Console.WriteLine(a3.CalculateInterest());
+            CurrentAccountPoly a3 = new CurrentAccountPoly("C1230125", cus2, 2000);
+            Console.WriteLine(a3.CalculateInterest()); ;
+
         }
     }
 }

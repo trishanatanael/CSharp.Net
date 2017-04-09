@@ -34,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>CSharp.NetWorkshops.BankAccountAppInheritance</StartupObject>
+    <StartupObject>CSharp.NetWorkshops.RationalTestImpv</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="ISS.RV.LIB">
@@ -50,9 +50,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BankAccountBranch.cs" />
+    <Compile Include="BankAccountPoly.cs" />
     <Compile Include="BankAccountInheritance.cs" />
     <Compile Include="BankAccount2Mul.cs" />
+    <Compile Include="RationalTestImpv.cs" />
     <Compile Include="RationalTest.cs" />
+    <Compile Include="Tostring.cs" />
     <Compile Include="Workshop21SampleCoinClass.cs" />
     <Compile Include="BankAccount2.cs" />
     <Compile Include="BankAccount.cs" />
